@@ -28,23 +28,20 @@ class Program
 
         job2._endYear = 2040;
 
-        job1.DisplayJobDetails();
+        job1.Display();
 
-        job2.DisplayJobDetails();
+        job2.Display();
 
+        Resume resume1 = new Resume();
 
+        resume1._name = "John Doe";
+
+        resume1._jobs.Add(job1);
+        resume1._jobs.Add(job2);
+
+        resume1.Display();
     }
 }
 
 
 
-
-//person1 = new Person();
- //   person1._givenName = "Emma";
- //   person1._familyName = "Smith";
- //   person1.ShowWesternName();
-
- //   person2 = new Person();
- //   person2._givenName = "Joseph";
- //   person2._familyName = "Smith";
- //   person2.ShowWesternName();
