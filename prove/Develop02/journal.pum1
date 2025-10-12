@@ -1,7 +1,36 @@
 @startuml
 
-title Journal
+title Journal Program
+
+class Journal {
+    -entries : list<Entry>
+    + AddEntry(entry : Entry)
+    + SaveToFile()
+    + LoadtoFile()
+    + DisplayEntries()
+
+}
+
+Class Entry{
+    - date : DateTime
+    - prompt : string
+    - text : string
+    + Display()
+}
 
 
+Class PromptGenerator{
+    + GetRandomPrompt() : string
+}
+
+
+class Program{
+    + Main() : void
+}
+
+Journal "1" --> "*" Entry
+Program --> Journal
+Program --> PromptGenerator
+PromptGenerator --> Entry
 
 @enduml
