@@ -3,23 +3,23 @@
 title Journal Program
 
 class Journal {
-    -entries : list<Entry>
+    -entries : List<Entry>
     + AddEntry(entry : Entry)
-    + SaveToFile()
-    + LoadtoFile()
-    + DisplayEntries()
+    + SaveToFile() : void
+    + LoadtoFile() : void
+    + DisplayEntries() : void
 
 }
 
-Class Entry{
+Class Entry {
     - date : DateTime
     - prompt : string
     - text : string
-    + Display()
+    + Display() : void
 }
 
 
-Class PromptGenerator{
+Class PromptGenerator {
     + GetRandomPrompt() : string
 }
 
@@ -32,5 +32,9 @@ Journal "1" --> "*" Entry
 Program --> Journal
 Program --> PromptGenerator
 PromptGenerator --> Entry
+
+
+' Journal has many entries, program starts journal and prompt generator.
+' prompt generator gives random prompts for Entry to use.
 
 @enduml
