@@ -9,7 +9,7 @@ public class Journal
         _entries.Add(entry);
     }
 
-    public void DisplayEntries()
+    public void DisplayEntries() //displaying all journal entries
     {
         Console.WriteLine("Journal Entries~~ ");
         if (_entries.Count == 0)
@@ -27,7 +27,7 @@ public class Journal
         }
     }
 
-    public void SaveToFile(string filename)
+    public void SaveToFile(string filename) //saving entries to file
     {
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
