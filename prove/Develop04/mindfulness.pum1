@@ -1,0 +1,90 @@
+@startuml
+
+title Activity Program
+
+class Program {
+    + Main() : void
+    + DisplayMenu(): void
+    + RunActivity(choice: int): void
+}
+
+note right of Program
+    The Program class is the entry point for the 
+    program and displays the menu and takes the
+    input from the user to initiate 
+    the activity
+end note
+
+class Activity {
+
+    + Activity(name : string, description : string)
+    + StartMessage() : void
+    + EndMessage() : void
+    + PauseWhileSpinner() : void
+    + PauseWithTimer(seconds : int) : void
+    + RunActivity() : void
+
+    
+
+}
+
+note right of Activity
+    The base class for all activities.
+    it defines shared behavior among
+    all the classes
+end note
+
+class Breathing {
+
+    + Breathing() : void
+    + RunActivity() : void
+    + BreathingCycle() : void
+
+}
+
+note right of Breathing
+    Breathing inherits from Activity.
+end note
+
+class Reflection {
+    - _reflectionPrompts : List<string>
+    - _reflectionQuestions : List<string>
+
+    + GetRandomPrompt() : string
+    + GetRandomQuestionForPrompt() : string
+    + DisplayPrompt() : void
+    + DisplayQuestionsAboutPrompt() : void
+    + RunActivity() : void
+
+}
+
+note right of Reflection
+    Breathing inherits from Activity.
+end note
+
+class Listing {
+
+    - _listingPrompts : List<string>
+    - _userResponses : List<string>
+
+    + Listing() : void
+    + RunActivity() : void
+    + GetRandomPrompt() : string
+    + CollectResponses() : void
+    + DisplayResults() : void
+    
+}
+
+note right of Listing
+    Breathing inherits from Activity.
+end note
+
+Program --> Activity : "initiates"
+Activity <|-- Breathing
+Activity <|-- Reflection
+Activity <|-- Listing
+
+
+
+
+@enduml
