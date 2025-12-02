@@ -34,7 +34,7 @@ class Program
 
         Console.Clear();
         scripture.Display();
-        Console.WriteLine("\nAll words are hidden or user quit. Program ended.");
+        Console.WriteLine("\nI hope you've memorized this scripture!");
 
 
 
