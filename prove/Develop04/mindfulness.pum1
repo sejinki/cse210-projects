@@ -17,6 +17,10 @@ end note
 
 class Activity {
 
+    - _name : string
+    - _description : string
+    - _duration : string
+
     + Activity(name : string, description : string)
     + StartMessage() : void
     + EndMessage() : void

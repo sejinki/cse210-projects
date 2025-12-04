@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
          //Scripture scripture = new Scripture();
-        int choice = 0;
+        int choice = -1;
 
         while (choice != 4)
         {
@@ -16,15 +16,18 @@ class Program
 
             if (int.TryParse(ChoiceMenu, out choice))
 
-                switch (ChoiceMenu)
+                switch (choice)
                 {
-                    case "1":
+                    case 1:
+                        new Breathing().Run();
                         break;
-                    case "2":
+                    case 2:
+                        new Reflection().RunActivity();
                         break;
-                    case "3":
+                    case 3:
+                        new Listing().RunActivity();
                         break;
-                    case "4":
+                    case 4:
                         break;    
                     default:
                         Console.WriteLine("Not an option, try again!");
