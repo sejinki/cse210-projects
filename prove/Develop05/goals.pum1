@@ -1,0 +1,97 @@
+@startuml
+title Goals Program
+
+class Program {
+    + Main() : void
+    + DisplayMenu(): void
+}
+
+note right of Program
+    The Program class is the entry point for the 
+    program and displays the menu and takes the
+    input from the user to initiate 
+    the goal that the user wants to input.
+end note
+
+class Goal {
+
+    - _name : string
+    - _description : string
+
+    + GetGoalName() : string
+    + GetDescription() : string
+    + GetPoints() : int
+    + RecordEvent() : int
+    + IsCompleted() : bool
+    + DisplayGoal() : string
+}
+
+note right of Goal
+    The base class for all goal types.
+    it defines shared behavior among
+    all the classes
+end note
+
+class OneTimeGoals {
+    - _isComplete : bool
+
+    + RecordEvent() : int
+    + IsCompleted() : bool
+    + DisplayGoal() : string
+
+}
+
+note right of OneTimeGoals
+    OneTimeGoals inherits from Goal.
+end note
+
+class EternalGoal {
+    + RecordEvent() : int
+    + IsCompleted() : bool
+    + DisplayGoal() : string
+
+}
+
+note right of EternalGoal
+    EternalGoal inherits from Goal.
+end note
+
+class ChecklistGoal {
+
+    - _targetCount : int
+    - _currentCount : int
+    - _bonusPoints : int
+
+    + RecordEvent() : int
+    + IsCompleted() : bool
+    + DisplayGoal() : string
+    
+}
+
+note right of ChecklistGoal
+    ChecklistGoal inherits from Goal.
+end note
+
+class GoalHub {
+    - _goals : List<Goal>
+    - _score : int
+
+    + AddGoal(Goal) : void
+    + RecordGoalEvent(int) : void
+    + DisplayGoals() : void
+    + DisplayScore() : void
+    + SaveGoals(string) : void
+    + LoadGoals(string) : void
+
+}
+
+Program --> GoalHub
+GoalHub "1" *-- "*" Goal
+Goal <|-- OneTimeGoals
+Goal <|-- EternalGoal
+Goal <|-- ChecklistGoal
+
+
+
+
+@enduml

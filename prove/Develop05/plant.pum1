@@ -1,0 +1,181 @@
+@startuml
+
+title Plant Program
+
+class Program {
+    + Main() : void
+    + DisplayMenu() : void
+}
+
+note right of Program
+    The program class is the entry point
+    of the Plant program. The menu is
+    shown to the user and where the user
+    can select from menu. The methods
+    are then initiated in PlantHub.
+end note
+
+abstract class Plant {
+    
+    - _name : string
+    - _plantType : string
+    - _PurchaseDate: DateTime
+    - _StoreName : string
+    - _price : int
+    - _isSold : bool
+    - _gaveAway : bool
+
+    + GetName() : string
+    + MarkSold() : void
+    + MarkGaveAway() : void
+    + DisplayPlant() : string
+    + CareNotes(): string
+
+
+}
+
+note right of Plant
+    This is the abstract base class
+    needed to run the program. It
+    declares the shared attributes, behaviors,
+    and constructors.
+end note
+
+class Epipremnum {
+
+    - _isTrailing : bool
+    - _hasPole : bool
+    - _isVariegated : bool
+    - _isRare: bool
+    - _isCommon: bool
+
+    + DisplayPlant(): string
+    + CareNotes() : string
+
+}
+
+note right of Epipremnum
+    Inherits from abstract class Plant
+    and includes if its trailing or mosspole.
+end note
+
+class Succulent {
+
+    - _isSpiky : bool
+    - _isBush : bool
+
+    + DisplayPlant() : string
+    + CareNotes : string
+
+}
+
+note right of Succulent
+    Inherits from Parent Plant class and
+    has more details on the type of growth
+    the succulent has.
+end note
+
+class Begonia {
+
+    - _isCane : bool
+    - _isBush : bool
+    - _flowerColor : string
+
+    + DisplayPlant() : string
+    + CareNotes : string
+}
+
+note right of Begonia
+    Inherits from abstract class Plant
+    They have different watering patterns and care
+end note
+
+class Propogation {
+
+    - _plantType : string
+    - _propCount : int
+    - _mediumUsed : string
+
+    + DisplayPlant() : string
+    + CareNotes : string
+
+}
+
+note right of Propogation
+    It is a class its own and represents
+    the props that the user is wanting
+    to make and to keep track of.
+end note
+
+abstract class PlantCare {
+
+    - _frequency : string
+    - _previouslyCompleted : DateTime
+
+    + DisplayCare() : string
+    + MarkCompleted() : void
+    + GetFrequency() : string
+}
+
+note right of PlantCare
+    Abstract base class for all Plant
+    care needed. Stores frequency and tracking
+    of care type routines.
+end note
+
+class Watering {
+
+    - _waterSource : string
+
+    + DisplayCare() : string
+}
+
+note right of Watering
+    This class handles the watering routine of
+    the different plant types. There are 3 types
+    of water used.
+end note
+
+class Sunlight {
+
+    - _lightType : string
+
+    + DisplayCare() : string
+}
+
+note right of Sunlight
+    This class handles sunlight requirements
+    such as filtered, indirect,
+    or direct light.
+end note
+
+class PlantHub {
+
+    - _plants : List<Plant>
+
+    + AddPlant(Plant) : void
+    + DisplayPlants() : void
+    + RemovePlant(int) : void
+    + MarkPlantSold(int) : void
+    + MarkPlantDonated(int) : void
+}
+
+note right of PlantHub
+    Manages the plant collection and
+    performs all plant-related actions.
+end note
+
+Program --> PlantHub
+PlantHub "1" *-- "*" Plant
+
+Plant <|-- Epipremnum
+Plant <|-- Succulent
+Plant <|-- Begonia
+Plant <|-- Propagation
+
+Plant "1" o-- "*" PlantCare
+PlantCare <|-- Watering
+PlantCare <|-- Fertilizing
+PlantCare <|-- Sunlight
+
+@enduml
