@@ -1,14 +1,19 @@
-public class Begonia : Plant
+public class Monstera : Plant
 {
-    public Begonia(string name)
-        : base(name, "Begonia", 6)
-    {
+    private bool _hasMossPole;
 
+    public Monstera(string name, bool _hasMossPole)
+        : base(name, "Monstera", 7)
+    {
+        this._hasMossPole = _hasMossPole;
     }
+
     public override string DisplayPlant()
     {
-        return $"{_name} [{_plantType}] - Health: {_health}";
+        string mossPoleCheck = _hasMossPole ? "[X]" : "[ ]";
+        return $"{_name} [{_plantType}] - Health: {_health} Moss Pole: {mossPoleCheck}";
     }
+
     public override void Water()
     {
         _lastwatered = DateTime.Now;

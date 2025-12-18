@@ -1,7 +1,7 @@
-public class Begonia : Plant
+public class Cactus : Plant
 {
-    public Begonia(string name)
-        : base(name, "Begonia", 6)
+    public Cactus(string name)
+        : base(name, "Cactus", 30)
     {
 
     }
@@ -11,8 +11,18 @@ public class Begonia : Plant
     }
     public override void Water()
     {
+        double daysSinceWatered = (DateTime.Now - _lastwatered).TotalDays;
+        if (daysSinceWatered < 11)
+        {
+            _health = "Dead";
+
+        }
+        else
+        {
+            _health = "Healthy";
+        }
         _lastwatered = DateTime.Now;
-        _health = "Healthy";
+
         Console.WriteLine($"{_name} has been watered.");
     }
 
